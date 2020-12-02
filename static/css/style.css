@@ -842,7 +842,9 @@ a.btn.btn-primary {
     color: #fff;
     background-color: #84c639;
     border-color: #84c639;
-    border-radius: 0;
+	border-radius: 0;
+	float: right;
+    margin: 5px;
 }
 button.submit.check_out{
     display: block;

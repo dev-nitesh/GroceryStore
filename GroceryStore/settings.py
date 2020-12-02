@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
+    'products.apps.ProductsConfig',
     'DeliveryPartner.apps.DeliverypartnerConfig',
     'Store.apps.StoreConfig',
     'user_handler.apps.UserHandlerConfig',

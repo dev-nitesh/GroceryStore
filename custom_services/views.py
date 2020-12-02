@@ -21,18 +21,21 @@ def send_verification_link(user):
 def validate_otp(request):
    if request.method == 'POST':
         OTP=request.POST['otp']
-        try:
-            sm=StoreOTPVerificationLinks.objects.filter(OTP=OTP)
-            if not sm:
-                return HttpResponse('Mail Validation failed')
-            user=USERS.objects.get(id=uid)
-            user.otp_validate=1
-            user.save()
-            #for s in sm:
-            #   s.delete()
-            return HttpResponse('Your phone number validated Successfully')
-        except:
+        
+        sm=StoreOTPVerificationLinks.objects.filter(OTP=OTP).values('id')
+        #uid=sm.uid         
+        print (sm)
+        
+        if not sm:
             return HttpResponse('OTP Validation failed')
+        fetchid= sm[0]['id']
+        user=USERS.objects.get(id=fetchid)
+        user.otp_validate=1
+        user.save()
+        #for s in sm:
+        #   s.delete()
+        return HttpResponse('Your phone number validated Successfully')
+        
     
    return render(request, 'signup.html')
 

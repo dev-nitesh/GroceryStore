@@ -39,113 +39,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <!-- header -->
 	<div class="agileits_header">
-	<!--	<div class="w3l_offers">
-			<a href="products.html">Today's special Offers !</a>
-		</div> -->
-		
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Signup</button>
-		
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width: 400px" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="{% url 'signup' %}" method="post">
-			{%csrf_token%}
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">UserName:</label>
-            <input type="text" name="Username" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-           <label for="message-text" class="col-form-label">Password:</label>
-			<input type="password" name="Password" class="form-control" id="message-text"></textarea> 
-			<!-- <input type="password" name="Password" placeholder="Password" required=" ">-->
-		  </div>
-		  <div class="form-group">
-            <label for="message-text" class="col-form-label">Email:</label>
-            <input type="email" name="Email"  required=" " class="form-control" id="message-text"></textarea>
-		  </div>
-		  <div class="form-group">
-            <label for="message-text" class="col-form-label">Phone:</label>
-            <input type="number" name="Phone" class="form-control" id="message-text"></textarea>
-		  </div>
-		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Register</button>
-		</form>
-		<div>
-			{%for message in messages%}
-			<h9>{{message}}</h9>
-			{%endfor%}
-		</div>
-	  </div> 
-	  
-      <div class="modal-footer">
-       <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Register</button> -->
-      </div>
-    </div>
-  </div>
-</div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" data-whatever="@getbootstrap">Login</button>
 
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width: 400px" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-			<form action="{% url 'login' %}" method="post">
-				{%csrf_token%}
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">UserName:</label>
-            <input type="text" name="Username" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-           <label for="message-text" class="col-form-label">Password:</label>
-			<input type="password" name="Password" class="form-control" id="message-text"></textarea> 
-			<!-- <input type="password" name="Password" placeholder="Password" required=" ">-->
-		  </div>
-		  
-		 
-		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-       <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Register</button> -->
-      </div>
-    </div>
-  </div>
-</div>
-		
 
-	<!--	<div class="w3l_header_right">
-			<ul>
-				<li class="dropdown profile_details_drop">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
-					<div class="mega-dropdown-menu">
-						<div class="w3ls_vegetables">
-							<ul class="dropdown-menu drp-mnu">
-								<li><a href="{%url 'login'%}">Login</a></li> 
-								<li><a href="{%url 'login'%}">Sign Up</a></li>
-							</ul>
-						</div>                  
-					</div>	
-				</li>
-			</ul>
-		</div> -->
 		<div class="product_list_header">  
 			<form action="#" method="post" class="last">
                 <fieldset>
@@ -154,7 +50,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <input type="submit" name="submit" value="View your cart" class="button" />
                 </fieldset>
             </form>
-		</div>
+        </div>
+        <li class="dropdown mega-dropdown active">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome {{userLogin.user}}<span class="caret"></span></a>				
+            <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+                <div class="w3ls_vegetables">
+                    <ul>	
+                        <li><a href="vegetables.html">My Orders</a></li>
+                        <li><a href="{%url 'user_details' userLogin.id %}">My Account</a></li>
+                        <li><a href="{%url 'index'%}">Logout</a></li>
+                    </ul>
+                </div>                  
+            </div>				
+        </li>
 		<div class="w3l_search">
 			<form action="#" method="post">
 				<input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
